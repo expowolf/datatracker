@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body { background: #05070d; color: #e6eefc; }
+body {
+  font-feature-settings: "ss01","cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(125,211,252,0.18); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(125,211,252,0.3); }
+
+@layer components {
+  .glass {
+    @apply relative rounded-2xl border border-white/5 bg-white/[0.03] backdrop-blur-xl shadow-inset;
+  }
+  .glass-strong {
+    @apply relative rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-2xl;
+  }
+  .panel {
+    @apply glass p-5;
+  }
+  .label {
+    @apply text-[10px] uppercase tracking-[0.18em] text-nx-dim font-medium;
+  }
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] text-nx-dim;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-white/80 hover:bg-white/[0.08] transition;
+  }
+  .ring-glow {
+    box-shadow: 0 0 0 1px rgba(125,211,252,0.25), 0 0 30px -5px rgba(125,211,252,0.35);
+  }
+}
+
+.holo-text {
+  background: linear-gradient(90deg,#9fdcff,#c4b5fd 40%,#6ee7b7 80%,#9fdcff);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(125,211,252,0.06), transparent);
+  height: 30%;
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(125,211,252,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125,211,252,0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+}
