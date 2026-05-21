@@ -81,10 +81,10 @@ export default function CommandCenter() {
           <div className="flex items-center justify-between gap-4">
             <Ring value={score} size={150} label="DAY SCORE" sub="vs 7d avg" />
             <div className="flex-1 space-y-2.5">
-              <Bar label="Focus" val={momentum} color="bg-nx-accent" />
-              <Bar label="Tasks" val={Math.round((completedTasks / Math.max(1, tasks.length)) * 100)} color="bg-nx-violet" />
-              <Bar label="Habits" val={Math.round((habits.reduce((a, h) => a + h.days.filter(Boolean).length, 0) / (habits.length * 7)) * 100)} color="bg-nx-green" />
-              <Bar label="Reading" val={Math.round(readPct)} color="bg-nx-amber" />
+              <MetricBar label="Focus" val={momentum} color="bg-nx-accent" />
+              <MetricBar label="Tasks" val={Math.round((completedTasks / Math.max(1, tasks.length)) * 100)} color="bg-nx-violet" />
+              <MetricBar label="Habits" val={Math.round((habits.reduce((a, h) => a + h.days.filter(Boolean).length, 0) / (habits.length * 7)) * 100)} color="bg-nx-green" />
+              <MetricBar label="Reading" val={Math.round(readPct)} color="bg-nx-amber" />
             </div>
           </div>
         </Panel>
@@ -282,7 +282,7 @@ export default function CommandCenter() {
   );
 }
 
-function Bar({ label, val, color }: { label: string; val: number; color: string }) {
+function MetricBar({ label, val, color }: { label: string; val: number; color: string }) {
   return (
     <div>
       <div className="flex items-center justify-between text-[11px] text-nx-dim">
